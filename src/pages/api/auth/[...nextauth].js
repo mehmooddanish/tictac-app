@@ -33,7 +33,9 @@ import { signOut } from "next-auth/react";
         //     clientSecret: process.env.GOOGLE_SECRET,
         // }),
     ],
+    secret:process.env.JWT_SECRET,
     pages:{
+        signIn:'api/auth/github',
         signOut:'/signout'
     }
 }
