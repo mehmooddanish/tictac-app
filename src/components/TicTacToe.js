@@ -1,12 +1,14 @@
 import index from "@/pages/add";
 import React, { useState } from "react";
-
+import { useSession } from "next-auth/react";
 const TicTacToe = () => {
   const [board, setBoard] = useState(Array(9).fill(""));
   const [Xplayer, setXplayer] = useState(true);
   const [xScore, setXscore] = useState(0);
   const [OScore, setOscore] = useState(0);
   const [model, setModel] = useState(false);
+
+  const {data: session} = useSession()
 
   const lines = [
     [0, 1, 2],
@@ -128,7 +130,45 @@ const handleClick = (ind) => {
   return (
     <>
       <div className="flex flex-col justify-center items-center">
-        <div className="flex w-[200px] justify-between p-2">
+
+{/* 
+        <div className="h-[150px] w-[300px] border-2 border-gray-500"> 
+            <p className="break-words">
+              asjbldivsdbv
+              asjbldivsdbv
+              asjbldivsdbv
+              asjbldivsdbv
+              asjbldivsdbv
+              asjbldivsdbv
+              asjbldivsdbv
+              asjbldivsdbvasjbldivsdbvasjbldivsdbvasjbldivsdbv
+              asjbldivsdbvasjbldivsdbv
+              asjbldivsdbv
+              asjbldivsdbv
+              asjbldivsdbv
+              asjbldivsdbvasjbldivsdbvasjbldivsdbvasjbldivsdbv
+              asjbldivsdbvasjbldivsdbv
+              asjbldivsdbv
+              asjbldivsdbv
+              asjbldivsdbv
+              asjbldivsdbvasjbldivsdbvasjbldivsdbvasjbldivsdbv
+              asjbldivsdbvasjbldivsdbv
+              asjbldivsdbv
+              asjbldivsdbv
+              asjbldivsdbv
+              asjbldivsdbvasjbldivsdbvasjbldivsdbvasjbldivsdbv
+              asjbldivsdbvasjbldivsdbv
+              asjbldivsdbv
+              asjbldivsdbv
+              asjbldivsdbv
+              asjbldivsdbvasjbldivsdbvasjbldivsdbvasjbldivsdbv
+              asjbldivsdbvasjbldivsdbv
+
+            </p>
+        </div> */}
+
+{session ? (<>
+  <div className="flex w-[200px] justify-between p-2">
           <span
             className={`border-red-600 ${
               Xplayer ? "border-b-2" : "border-b-none"
@@ -162,7 +202,12 @@ const handleClick = (ind) => {
           >
             Restart
           </button>
+        {session ? (<span className="">your session time is <br/>  {new Date(session?.expires).getHours()} Hours</span>): ""}
+
         </div>
+</>) : <h3 className="text-[30px]">please signIn First</h3> }
+
+    
       </div>
 
 {/* model  for popup */}

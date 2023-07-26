@@ -14,7 +14,7 @@ export default function App({
   // },[])
   return (
     <div>
-      <SessionProvider session={session}>
+      <SessionProvider session={pageProps.session}>
         <Provider store={store}>
           <Navbar />
           <Component {...pageProps} />

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useSession, signIn } from "next-auth/react";
+import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 
 const Navbar = () => {
-  const { data } = useSession();
-  console.log(data);
+  const { data: session } = useSession();
+  console.log(session);
   const [mobileMenu, setMobileMenu] = useState(false);
 
   const handleMobileMenu = (action) => {
@@ -24,15 +24,32 @@ const Navbar = () => {
         <h2 className="text-xl">Logo</h2>
       </Link>
       <div className="flex gap-4 items-center">
-        <button
+        <span className="text-green-500 font-bold">{session?.user?.name}</span>
+        {
+          session && <button
+          className=" hidden md:block bg-gray-400 capitalized  p-2"
+          onClick={() => signOut()}
+        >
+          SignOut {session?.token?.token?.account?.provider}
+        </button>
+        }
+        {session ? '' : <button
           className=" hidden md:block bg-gray-400  p-2"
           onClick={() => signIn("github")}
         >
           SignIn Github
-        </button>
-        <button className="hidden md:block bg-blue-400 p-2">
+        </button>}
+        
+        {session ? ''
+        //   <button className="hidden md:block bg-blue-400 p-2"
+        // onClick={() => signOut()}>
+        //   SignOut Google
+        // </button> 
+        :   <button className="hidden md:block bg-blue-400 p-2"
+        onClick={() => signIn("google")}>
           SignIn Google
-        </button>
+        </button>}
+      
         {mobileMenu ? (
           <svg
             onClick={() => handleMobileMenu("close")}

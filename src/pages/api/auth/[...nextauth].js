@@ -21,22 +21,40 @@ import { signOut } from "next-auth/react";
 
 // })
  const authOptions = {
-    // Configure one or more authentication providers
     providers: [
 
         GithubProvider({
             clientId: process.env.GITHUB_ID,
             clientSecret: process.env.GITHUB_CLIENTSECRET,
         }),
-        // GoogleProvider({
-        //     clientId: process.env.GOOGLE_CLIENT_ID,
-        //     clientSecret: process.env.GOOGLE_SECRET,
-        // }),
+        GoogleProvider({
+            clientId: process.env.GOOGLE_ID,
+            clientSecret: process.env.GOOGLE_CLIENTSECRET,
+        })
     ],
+
+
     secret:process.env.JWT_SECRET,
-    pages:{
-        signIn:'api/auth/github',
-        signOut:'/signout'
-    }
+    callbacks: {
+         jwt(token, user) {
+          if (user) {
+            // If the user exists, add the type key to the token
+            token.type = user.provider;
+          }
+          return token;
+        },
+         session(session, token) {
+          if (token) {
+            // If the token exists, add the type key to the session
+            session.user.type = token.type;
+          }
+          return session;
+        },
+      },
+    
+    // pages:{
+    //     signIn:'/signin',
+    //     signOut:'/signout'
+    // }
 }
 export default NextAuth(authOptions)
