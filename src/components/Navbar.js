@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   const { data: session } = useSession();
-  console.log(session);
+  console.log(session,'client');
   const [mobileMenu, setMobileMenu] = useState(false);
 
   const handleMobileMenu = (action) => {
@@ -30,7 +30,7 @@ const Navbar = () => {
           className=" hidden md:block bg-gray-400 capitalized  p-2"
           onClick={() => signOut()}
         >
-          SignOut {session?.token?.token?.account?.provider}
+          SignOut {session?.provider}
         </button>
         }
         {session ? '' : <button
