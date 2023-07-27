@@ -29,7 +29,7 @@ export const apiSlice = createApi({
       }),
     }),
     updateUser: builder.mutation({
-      query: ({ id, updateUser}) => ({
+      query: ({ id, updateUser }) => ({
         url: `users/${id}`,
         method: "PATCH",
         body: updateUser,
@@ -75,8 +75,8 @@ export const {
   // useUpdateUserMutation,
 
   useLazyGetAllUsersQuery,
- useLazyGetSingleUserQuery,
+  useLazyGetSingleUserQuery,
   useDeleteItemMutation,
   useCreateUserMutation,
-  useUpdateUserMutation
+  useUpdateUserMutation,
 } = apiSlice;

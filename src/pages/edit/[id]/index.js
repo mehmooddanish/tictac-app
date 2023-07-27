@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import {
   useLazyGetSingleUserQuery,
   useUpdateUserMutation,
   useLazyGetAllUsersQuery,
 } from "@/redux/apiSlice";
+import { useRouter } from "next/router";
 
-const index = () => {
+const EditId = () => {
   const router = useRouter()
   const { id } = router.query
  
@@ -84,4 +84,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default EditId;

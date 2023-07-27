@@ -26,9 +26,9 @@ const Cart = () => {
           ></div>
           <div className="enterFromRight h-[calc(100vh-44px)] md:h-[calc(100vh-54px)] fixed top-[44px]  md:top-[54px] right-0 w-[400px] border-2 border-gray-300 divide-y divide-gray-600 flex flex-col bg-gray-300 justify-between">
             <div className="h-full divide-y divide-gray-600">
-              {carts.map((item) => {
+              {carts.map((item,id) => {
                 return (
-                  <div>
+                  <div key={id}>
                     <div
                       key={item.id}
                       className="h-full w-full max-h-[100px] flex items-center justify-between relative"

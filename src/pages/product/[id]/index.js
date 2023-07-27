@@ -1,13 +1,12 @@
 import React from 'react'
-import { useGetProductByIdQuery } from '@/redux/apiSlice'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-const index = () => {
+const ProductID = () => {
 
 
     const router = useRouter()
     const id = router.query.id
-    const { data, isLoading } = useGetProductByIdQuery(id)
+    // const { data, isLoading } = useGetProductByIdQuery(id)
    
   
   return (
@@ -15,7 +14,7 @@ const index = () => {
       <Head>
         <title>Product</title>
       </Head>
-      <div className="p-4">
+      {/* <div className="p-4">
         <div className="w-full max-w-[400px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
           <img
             className="rounded-t-lg object-fit w-full h-full max-h-[250px] min-h-[250px] lg:max-h-[400px] lg:min-h-[400px]"
@@ -50,9 +49,9 @@ const index = () => {
             ></svg>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
 
-export default index
+export default ProductID

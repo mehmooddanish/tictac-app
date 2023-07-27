@@ -1,7 +1,7 @@
 import { signOut } from "next-auth/react";
 import React from "react";
 
-const signout = () => {
+const dashboard = () => {
   return (
     <div
       className="cursor-pointer"
@@ -12,4 +12,4 @@ const signout = () => {
   );
 };
 
-export default signout;
+export default dashboard;

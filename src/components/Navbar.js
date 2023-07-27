@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   const { data: session } = useSession();
-  console.log(session,'client');
+  console.log(session, "client");
   const [mobileMenu, setMobileMenu] = useState(false);
 
   const handleMobileMenu = (action) => {
@@ -17,7 +17,10 @@ const Navbar = () => {
       setMobileMenu(false);
     }
   };
-
+  let payload = {
+    username: "Dave",
+    password: "nextauth",
+  };
   return (
     <div className="flex justify-between items-center py-2 px-8 bg-gray-300 z-10">
       <Link href="/">
@@ -25,31 +28,53 @@ const Navbar = () => {
       </Link>
       <div className="flex gap-4 items-center">
         <span className="text-green-500 font-bold">{session?.user?.name}</span>
-        {
-          session && <button
-          className=" hidden md:block bg-gray-400 capitalized  p-2"
-          onClick={() => signOut()}
-        >
-          SignOut {session?.provider}
-        </button>
-        }
-        {session ? '' : <button
-          className=" hidden md:block bg-gray-400  p-2"
-          onClick={() => signIn("github")}
-        >
-          SignIn Github
-        </button>}
-        
-        {session ? ''
-        //   <button className="hidden md:block bg-blue-400 p-2"
-        // onClick={() => signOut()}>
-        //   SignOut Google
-        // </button> 
-        :   <button className="hidden md:block bg-blue-400 p-2"
-        onClick={() => signIn("google")}>
-          SignIn Google
-        </button>}
-      
+        {session && (
+          <button
+            className=" hidden md:block bg-gray-400 capitalized  p-2"
+            onClick={() => signOut()}
+          >
+            SignOut {session?.provider}
+          </button>
+        )}
+        {session ? (
+          ""
+        ) : (
+          <button
+            className=" hidden md:block bg-gray-400  p-2"
+            onClick={() => signIn("github")}
+          >
+            SignIn Github
+          </button>
+        )}
+
+        {session ? (
+          ""
+        ) : (
+          //   <button className="hidden md:block bg-blue-400 p-2"
+          // onClick={() => signOut()}>
+          //   SignOut Google
+          // </button>
+          <button
+            className="hidden md:block bg-blue-400 p-2"
+            onClick={() => signIn("google")}
+          >
+            SignIn Google
+          </button>
+        )}
+
+        {session ? (
+          ""
+        ) : (
+          <button
+            className=" hidden md:block bg-gray-400  p-2"
+            onClick={() => signIn("credentials", {
+              redirect:false,
+              ...payload
+            })}
+          >
+            SignIn Credentials
+          </button>
+        )}
         {mobileMenu ? (
           <svg
             onClick={() => handleMobileMenu("close")}

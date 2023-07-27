@@ -13,13 +13,11 @@ export default function App({
   //   initAOS()
   // },[])
   return (
-    <div>
-      <SessionProvider session={pageProps.session}>
-        <Provider store={store}>
-          <Navbar />
-          <Component {...pageProps} />
-        </Provider>
-      </SessionProvider>
-    </div>
+    <SessionProvider session={pageProps.session}>
+      <Provider store={store}>
+        <Navbar />
+        <Component {...pageProps} />
+      </Provider>
+    </SessionProvider>
   );
 }

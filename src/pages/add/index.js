@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useCreateUserMutation } from "@/redux/apiSlice";
 
-const index = () => {
+const AddPage = () => {
   const router = useRouter();
   const [createUser, { isLoading }] = useCreateUserMutation();
 
@@ -57,4 +57,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default AddPage;
