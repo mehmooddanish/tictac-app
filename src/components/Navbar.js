@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
+
+  
   const { data: session } = useSession();
-  console.log(session,'client');
+const router = useRouter()
+  
+console.log(session)
+  // console.log(session?.provider,'client');
   const [mobileMenu, setMobileMenu] = useState(false);
 
   const handleMobileMenu = (action) => {
@@ -18,6 +24,9 @@ const Navbar = () => {
     }
   };
 
+
+  
+
   return (
     <div className="flex justify-between items-center py-2 px-8 bg-gray-300 z-10">
       <Link href="/">
@@ -30,25 +39,28 @@ const Navbar = () => {
           className=" hidden md:block bg-gray-400 capitalized  p-2"
           onClick={() => signOut()}
         >
-          SignOut {session?.provider}
+          SignOut
         </button>
         }
         {session ? '' : <button
           className=" hidden md:block bg-gray-400  p-2"
-          onClick={() => signIn("github")}
+          onClick={() => signIn()}
         >
-          SignIn Github
+          SignIn 
         </button>}
+
+        <button className="bg-yellow-500 p-2" onClick={()=>router.push("/login")}>LogIn </button>
+
         
-        {session ? ''
+        {/* {session ? ''
         //   <button className="hidden md:block bg-blue-400 p-2"
         // onClick={() => signOut()}>
         //   SignOut Google
         // </button> 
         :   <button className="hidden md:block bg-blue-400 p-2"
-        onClick={() => signIn("google")}>
+        onClick={() => signIn()}>
           SignIn Google
-        </button>}
+        </button>} */}
       
         {mobileMenu ? (
           <svg
