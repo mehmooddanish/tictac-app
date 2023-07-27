@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
+
+  
   const { data: session } = useSession();
   console.log(session, "client");
   const [mobileMenu, setMobileMenu] = useState(false);

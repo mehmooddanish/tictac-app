@@ -131,41 +131,8 @@ const handleClick = (ind) => {
     <>
       <div className="flex flex-col justify-center items-center">
 
-{/* 
-        <div className="h-[150px] w-[300px] border-2 border-gray-500"> 
-            <p className="break-words">
-              asjbldivsdbv
-              asjbldivsdbv
-              asjbldivsdbv
-              asjbldivsdbv
-              asjbldivsdbv
-              asjbldivsdbv
-              asjbldivsdbv
-              asjbldivsdbvasjbldivsdbvasjbldivsdbvasjbldivsdbv
-              asjbldivsdbvasjbldivsdbv
-              asjbldivsdbv
-              asjbldivsdbv
-              asjbldivsdbv
-              asjbldivsdbvasjbldivsdbvasjbldivsdbvasjbldivsdbv
-              asjbldivsdbvasjbldivsdbv
-              asjbldivsdbv
-              asjbldivsdbv
-              asjbldivsdbv
-              asjbldivsdbvasjbldivsdbvasjbldivsdbvasjbldivsdbv
-              asjbldivsdbvasjbldivsdbv
-              asjbldivsdbv
-              asjbldivsdbv
-              asjbldivsdbv
-              asjbldivsdbvasjbldivsdbvasjbldivsdbvasjbldivsdbv
-              asjbldivsdbvasjbldivsdbv
-              asjbldivsdbv
-              asjbldivsdbv
-              asjbldivsdbv
-              asjbldivsdbvasjbldivsdbvasjbldivsdbvasjbldivsdbv
-              asjbldivsdbvasjbldivsdbv
-
-            </p>
-        </div> */}
+ 
+    
 
 {session ? (<>
   <div className="flex w-[200px] justify-between p-2">
