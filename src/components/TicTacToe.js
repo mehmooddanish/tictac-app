@@ -1,12 +1,39 @@
-import index from "@/pages/add";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import { gsap } from "gsap";
+import Link from "next/link";
 const TicTacToe = () => {
   const [board, setBoard] = useState(Array(9).fill(""));
   const [Xplayer, setXplayer] = useState(true);
   const [xScore, setXscore] = useState(0);
   const [OScore, setOscore] = useState(0);
   const [model, setModel] = useState(false);
+ 
+
+
+  useEffect(()=>{
+    const timeLine = gsap.timeline()
+    timeLine.to('.gsapanimate', {
+      x: 2,
+      opacity: 0.5,
+      duration: 2,
+      
+      // onComplete: () => {
+      //   timeLine.from('.gsapanimate', {
+      //     scale: 1.2, 
+      //     duration: 1,
+      //     opacity: 0.8,
+      //     onComplete:()=>{
+      //      timeLine.to(".gsapanimate",{
+      //       scale:1,
+      //       opacity:1,
+      //       duration:1
+      //      }) 
+      //     }
+      //   });
+      // },
+    });
+  },[])
 
   const {data: session} = useSession()
 
@@ -118,9 +145,9 @@ const handleClick = (ind) => {
      if(winner){
       setBoard(Array(9).fill(""))
         if(winner === "X"){
-            setXscore((preState)=>preState  + 1)
+            setXscore((prev)=>prev  + 1)
         }else{
-          setOscore((preState)=>preState + 1)
+          setOscore((prev)=>prev + 1)
         }
      }
   
@@ -129,12 +156,27 @@ const handleClick = (ind) => {
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center">
+      <div className="pt-20 flex justify-center items-center flex-col gap-6">
 
- 
+      <div className="gsapanimate h-[100px]  w-max px-2 bg-violet-400 flex items-center justify-center whitespace-nowrap"><p className="">Gsap Animation</p></div>
     
+    <Link href={"/animation"}>
+    <p className="">Switch Page</p>
+    </Link>
 
-{session ? (<>
+{/* <div className="">
+<svg viewBox="0 0 100 100" width="200" height="200">
+        <path
+          className="path-to-animate"
+          d="M10,10 L90,10 L90,90 L10,90Z"
+          fill="none"
+          stroke="black"
+          strokeWidth="2"
+        />
+      </svg>
+</div> */}
+
+{/* 
   <div className="flex w-[200px] justify-between p-2">
           <span
             className={`border-red-600 ${
@@ -165,14 +207,14 @@ const handleClick = (ind) => {
         <div className="w-[200px] grid place-items-center">
           <button
             className="px-2 py-1 bg-violet-400 mt-2"
-            // onClick={handleRestart}
+            onClick={handleRestart}
           >
             Restart
           </button>
         {session ? (<span className="">your session time is <br/>  {new Date(session?.expires).getHours()} Hours</span>): ""}
 
-        </div>
-</>) : <h3 className="text-[30px]">please signIn First</h3> }
+        </div> */}
+ 
 
     
       </div>

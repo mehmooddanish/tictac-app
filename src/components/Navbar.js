@@ -25,7 +25,7 @@ const Navbar = () => {
     password: "nextauth",
   };
   return (
-    <div className="flex justify-between items-center py-2 px-8 bg-gray-300 z-10">
+    <div className="flex justify-between items-center py-2 px-8 bg-gray-300 z-10 ">
       <Link href="/">
         <h2 className="text-xl">Logo</h2>
       </Link>
@@ -109,10 +109,10 @@ const Navbar = () => {
         )}
       </div>
 
-      <div
+      {/* <div
         id="mobileDiv"
         className={`${
-          mobileMenu ? "translate-x-0" : "translate-x-full "
+          mobileMenu ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
         }  transition-all duration-500 ease-in-out absolute top-11 left-0 w-full bg-zinc-900 text-white flex flex-col items-center gap-5 py-5 `}
       >
         <span>Home</span>
@@ -120,7 +120,7 @@ const Navbar = () => {
         <span>Feature</span>
         <span>Contacts</span>
         <span>About</span>
-      </div>
+      </div> */}
     </div>
   );
 };

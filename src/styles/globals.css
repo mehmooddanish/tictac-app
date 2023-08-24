@@ -2,6 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@font-face {
+  font-family: 'brice';
+  src: url('../../public/fonts/Brice-Bold.woff2') format('woff2'),
+      url('../../public/fonts/Brice-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'brice';
+  src: url('../../public/fonts/Brice-Light.woff2') format('woff2'),
+      url('../../public/fonts/Brice-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'brice';
+  src: url('../../public/fonts/Brice-Regular.woff2') format('woff2'),
+      url('../../public/fonts/Brice-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+h2{
+  font-family: brice;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -54,21 +82,82 @@ input::before {
   border-image: linear-gradient(21deg, #10abff, #1beabd) 1;
 } */
 
-		
-
-
-	
-	
-
-
-
-
 input {
-	font-family: inherit;
-	line-height:inherit;
-	color:#2e3750;
-	min-width:12em;
+  font-family: inherit;
+  line-height:inherit;
+  color:#2e3750;
+  min-width:12em;
 }
+		
+.mySwiper{
+  background-color: aquamarine;
+  height: calc(100vh - 56px);
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.swiperSlide{
+  background-color: blue;
+}
+  
+/* Dropdown container */
+.dropdown {
+  height: max-content;
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown trigger button */
+.dropdown-trigger .button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+/* Dropdown content */
+.dropdown-content {
+  padding: 10px;
+}
+
+/* Dropdown items */
+.dropdown-item {
+  display: block;
+  padding: 5px 0;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+/* Show the dropdown menu when the button is clicked */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+	
+	
+
+
+
+
 
 
 
